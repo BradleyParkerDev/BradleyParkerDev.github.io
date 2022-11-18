@@ -1,0 +1,37 @@
+body {
+    
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background: lightblue url("catsleeping.gif") repeat fixed center; 
+
+
+}
+
+.container{
+    background-color: #e5e5e5;
+    width: 768px;
+    padding: 0px;
+    border: black 2px solid;
+}
+
+.header{
+    align-items: flex-start;
+    text-align: center;
+    justify-content: space-around;
+    border: black 2px solid;
+    width: auto;
+}
+
+.sub-header{
+    text-align: center;
+}
+
+.parent{
+    width: 768px;
+    padding-left: 20px;
+}
+
+.child{
+    border: black 2px solid;
+}
