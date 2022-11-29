@@ -1,37 +1,52 @@
-body {
-    
-    display: flex;
-    justify-content:center;
-    align-items:center;
-    background: lightblue url("catsleeping.gif") repeat fixed center; 
-
-
+#container{
+    display:grid;
+    grid-template-columns: auto auto auto auto auto;
 }
 
-.container{
-    background-color: #e5e5e5;
-    width: 768px;
-    padding: 0px;
-    border: black 2px solid;
-}
 
-.header{
-    align-items: flex-start;
+.grid-item{
     text-align: center;
-    justify-content: space-around;
-    border: black 2px solid;
-    width: auto;
+    border: 2px solid black;
+    background-color: blue;
+    color: gold;
+    font-weight: bold;
+
+}
+.grid-item:hover {
+    background-color: grey;
+}
+h1{
+    text-align: center;
+    color: gold;
+    text-shadow: 2px  2px black;
+
 }
 
-.sub-header{
+h2{
+    text-align: center;
+    color: gold;
+    text-shadow: 2px  2px black;
+}
+
+p{
     text-align: center;
 }
 
-.parent{
-    width: 768px;
-    padding-left: 20px;
+form{
+    text-align: center;
 }
 
-.child{
-    border: black 2px solid;
+label{
+    color: gold;
+    text-shadow: 1.5px  1px black;
+}
+
+#submit{
+    color: gold;
+    text-shadow: 1px  1px black; 
+    background-color: darkgrey;  
+}
+
+.selected{
+    background-color: grey;
 }
