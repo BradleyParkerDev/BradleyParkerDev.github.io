@@ -10,6 +10,11 @@ browserify main.js -p esmify > bundle.js
 //financejs library 
 const finance = require('@travishorn/finance');
 
+
+
+
+
+
 // Console Test Examples
 // console.log(Math.round(finance.pmt(0.0525, 5, -10000) * 100) / 100);
 // const values = [-1500, 500, 500, 500, 500];
@@ -268,26 +273,18 @@ cptButton.addEventListener('click', function(){
 //Financial Facts
 //////////////////////////////////////////////////////////////
 //Facts Source - https://investinganswers.com/articles/99-surprising-financial-facts-most-investors-dont-know
-let financialFact = [];
-financialFact[0] = "The United States generates more than 20% of the world's GDP with about 4% of the world's population.";
-financialFact[1] = "In 2004, Alan Greenspan said, 'American consumers might benefit if lenders provided greater mortgage product alternatives to the traditional fixed-rate mortgage.' Since 2007, total losses attributable to subprime, Alt-A and other alternative mortgage products have been in the trillions.";
-financialFact[2] = "The first self-made female millionaire was Madam C.J. Walker. In the early 1900s, Walker developed and operated a cosmetics empire focused on African-American women. She was quoted as saying: 'I am a woman who came from the cotton fields of the South. From there I was promoted to the washtub. From the washtub I was promoted to the cook kitchen and from there I promoted myself into the business of manufacturing hair goods and preparations. I have built my own factory on my own ground.'";
-financialFact[3] = "One of the smallest economies to have its own U.S.-listed ETF is Israel. The ETF trades under the ticker symbol EIS.";
-financialFact[4] = "The median income of persons 65 and older in 2010 was $25,704 for males and $15,072 for females.";
-financialFact[5] = "Oakley, Inc. chose the ticker symbol OO because it looks like a pair of sunglasses.";
-financialFact[6] = "The New York Stock Exchange was born on May 17, 1792 with the signing of the Buttonwood Agreement. The agreement, which laid out trading rules and regulations, was signed by 24 stock brokers underneath a buttonwood tree. The entire contract was only two sentences in length.";
-financialFact[7] = "The history of Wall Street dates back to the 1600s, when New York was called the New Amsterdam settlement. Back then, before the bells and exchanges, it was merely a pathway that ran alongside a wall protecting the settlement from Native American attacks. In a moment of creativity, the citizens named the corridor 'Wall Street.'";
-financialFact[8] = "Flatbush National Bank of Brooklyn was the first bank to issue a credit card in 1946.";
-financialFact[9] = "The highest-price stock currently sold on the NYSE is Warren Buffett's Berkshire Hathaway, Class A (NYSE: BRK-A), which sells for more than $400,000 per share.";
-
-let finFact = document.querySelector("#financialFact")
+let finFact = document.querySelector("#financialFact");
 let fact = document.querySelector("#fact");
 let closeButton = document.querySelector("#closeButton")
-let randomFact = Math.floor((Math.random() * 10) + 0);
-fact.innerText = financialFact[randomFact];
-
-
 closeButton.addEventListener('click',function(){
-
     finFact.remove();
 })
+function readFinFacts(){
+    fetch('financialFacts.json')           
+    .then(response => response.json())
+    .then(data => {
+        let randomFact = Math.floor((Math.random() * data.length) + 0);
+        fact.innerText = data[randomFact].Fact;
+    });
+}
+readFinFacts();
