@@ -9,12 +9,9 @@ browserify main.js -p esmify > bundle.js
 //////////////////////////////////////////////////////////////
 //financejs library 
 const finance = require('@travishorn/finance');
-
-
-
-
-
-
+const formatter = new Intl.NumberFormat('en');
+const num = 120000000;
+console.log(formatter.format(num));
 // Console Test Examples
 // console.log(Math.round(finance.pmt(0.0525, 5, -10000) * 100) / 100);
 // const values = [-1500, 500, 500, 500, 500];
@@ -89,16 +86,10 @@ let button9 = document.querySelector('#button-9');
 for(let i = 0; i < calcButton.length; i++){
     calcButton[i].addEventListener('click', function(){
         let cursorPosition = inputText.selectionStart;
-        //console.log(cursorPosition);
         inputText.value = inputText.value.substring(0,cursorPosition) + calcButton[i].innerText + inputText.value.substring(cursorPosition);
-        //inputText.value = inputText.value += calcButton[i].innerText;
         result = eval(inputText.value);
-
         totalOutput.innerText = eval(inputText.value);
-
-        
     });
-
 }
 
 // Delete Button
@@ -108,11 +99,9 @@ deleteButton.addEventListener('click',function(){
     inputText.focus()
     inputText.setSelectionRange(cursorPosition-1, cursorPosition-1)
     totalOutput.innerText = eval(inputText.value);
-    
     if(inputText.value === undefined){
         totalOutput.innerText = "";
     }
-
 });
 
 // Clear Button
@@ -125,8 +114,6 @@ clearButton.addEventListener('click',function(){
 // = Button
 eqlButton.addEventListener('click',function(){
     inputText.value = result;
-    //totalOutput.innerText = "";
-
 });
 
 // +/- Button
@@ -139,8 +126,7 @@ negButton.addEventListener('click',function(){
     else{
         inputText.value = `-${inputText.value}`;
         totalOutput.innerText = eval(inputText.value);
-    }
-    
+    } 
 })
 
 // N Button
@@ -151,7 +137,6 @@ nButton.addEventListener('click',function(){
     }
     else{
         nButton.style.background = "";
-
     }
     console.log(`N: ${n}`);
 });
@@ -164,7 +149,6 @@ iyButton.addEventListener('click',function(){
     }
     else{
         iyButton.style.background = "";
-
     }
     console.log(`I/Y: ${r}`);
 });
@@ -177,7 +161,6 @@ pvButton.addEventListener('click',function(){
     }
     else{
         pvButton.style.background = "";
-
     }
     console.log(`PV: ${pv}`);
 });
@@ -190,7 +173,6 @@ pmtButton.addEventListener('click',function(){
     }
     else{
         pmtButton.style.background = "";
-
     }
     console.log(`PMT: ${pmt}`);
 });
@@ -269,6 +251,7 @@ cptButton.addEventListener('click', function(){
     }
 });
 
+
 //////////////////////////////////////////////////////////////
 //Financial Facts
 //////////////////////////////////////////////////////////////
@@ -288,3 +271,4 @@ function readFinFacts(){
     });
 }
 readFinFacts();
+
